@@ -2,10 +2,14 @@ const express = require('express');
 const { Signup, Login, TokenVerify, FilterFuction } = require('../services/userService');
 const router = express.Router();
 
+router.get('/',(req,res)=>{
+    res.send({status: 200, msg: 'hello, this is homeroute !'})
+})
+
 router.post('/signup', async(req, res) => {
     let response = await Signup(req);
     console.log(response)
-    if(response.ack === '1') res.status(200).json(response)
+    if(response.status === 200) res.status(200).json(response)
     else res.status(501).send(response)
 })
 
@@ -16,13 +20,13 @@ router.post('/login', async(req, res) => {
 
 })
 
-router.get('/tokenVerify', async(req, res) => {
+router.post('/tokenVerify', async(req, res) => {
     let response = await TokenVerify(req);
     if(response.status === 200) res.json(response)
     else res.send(response)
 })
 
-router.get('/filter', async(req, res) => {
+router.post('/filter', async(req, res) => {
     let response = await FilterFuction(req);
     if(response.status === 200) res.json(response)
     else res.send(response)

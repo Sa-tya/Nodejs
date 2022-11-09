@@ -15,7 +15,7 @@ async function Signup(req) {
         let role = req.body.role.trim().toLowerCase();
         if (password.match(/^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{8,}$/)) //match(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
             password = bcrypt.hashSync(password, bcrypt.genSaltSync(10))
-        else return { ack: '0', msg: 'Write a valid Password !' }
+        else return { status:201, msg: 'Write a valid Password !' }
 
         return userModel.create({
             // Uid: 'uid',
@@ -29,16 +29,16 @@ async function Signup(req) {
         })
             .then(async (res) => {
                 // console.log(await userModel.findAll({}))
-                return { ack: 1, msg: 'Account successfully created' }
+                return { status:200, msg: 'Account successfully created' }
             })
             .catch((err) => {
                 console.log(err)
-                return { ack: 0, msg: 'Error in user creation' }
+                return { status:201, msg: 'Error in user creation' }
             })
     }
     catch (err) {
         console.log(err)
-        return { ack: 0, msg: 'Error occured !' }
+        return { status:201, msg: 'Error occured !' }
     }
 }
 
@@ -65,7 +65,7 @@ async function Login(req) {
                 if (bcrypt.compareSync(password, res[0]['Password'])) {
                     let token = jwt.sign({
                         data: { Uid: res[0].Uid, Email: res[0].Email }
-                    }, process.env.Secret, { expiresIn: '1h' });
+                    }, process.env.Secret, { expiresIn: '30 days' });
                     return {
                         status: 200,
                         data: res[0],
