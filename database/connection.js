@@ -9,15 +9,15 @@ const { Sequelize } = require('sequelize');
 //     database: process.env.DataBase
 // });
 
-const db = new Sequelize(
-    process.env.DataBase, //database Name
-    process.env.DBUser, // user name
-    process.env.DBPassword, // password
-    {
-        host: process.env.DataBaseHost,
-        dialect: 'postgres',
+const db = new Sequelize(process.env.DBURI,
+    // process.env.DataBase, //database Name
+    // process.env.DBUser, // user name
+    // process.env.DBPassword, // password
+    // {
+    //     host: process.env.DataBaseHost,
+    //     dialect: 'postgres',
 
-    }
+    // }
 )
 db.sync();
 (async () => {

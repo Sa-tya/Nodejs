@@ -73,6 +73,12 @@ async function Login(req) {
                         token: token
                     }
                 }
+                else {
+                    return {
+                        status: 201,
+                        msg: 'Invalid password!'
+                    }
+                }
             })
         else {
             return {
