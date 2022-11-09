@@ -10,6 +10,6 @@ app.use(express.json());
 
 app.use('/',user)
 
-app.listen(process.env.Port,()=>{
+app.listen(process.env.Port || 4000,()=>{
     console.log(`>> server started at ${process.env.Port} !`)
 })
