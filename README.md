@@ -3,6 +3,8 @@
 ## Various API call cannot be called using browser because currently there is no frontend in this APP.
 ## You can test various API on this URL in POSTMAN.
 
+#### Base url([https://nodejs-am0m.onrender.com/])
+
 ## some end-point which is defined in this Webapp.
 
 ### post('/signup', data)
@@ -37,5 +39,5 @@
     "email": "sp2gmai.com"
     }
 
-    // You can filter data on email, firstName, phone, status
+    // You can filter data on email, firstName, phone, status (active/inactive)
 
