@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "satya",
@@ -17,7 +17,6 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "pg-promise": "^10.12.1",
-    "nodemon": "^2.0.16",
     "sequelize": "^6.25.4",
     "uuid": "^9.0.0"
   }
